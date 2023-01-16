@@ -1,0 +1,36 @@
+{
+  "name": "vekelz",
+  "version": "1.0.0",
+  "description": "A simple Node-Express REST API with fully functional MySQL CRUD operations using Sequelize, and frontend UI/UX implementation using Bootstrap 5.",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vekelz",
+    "node",
+    "nodejs",
+    "express",
+    "mysql2",
+    "sequelize",
+    "restapi",
+    "upload",
+    "image",
+    "multer",
+    "bootstrap"
+  ],
+  "author": "Ahmed Khaled",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.0.0",
+    "node": "^19.0.0",
+    "nodemon": "^2.0.20",
+    "randomstring": "^1.2.3",
+    "sequelize": "^6.28.0"
+  }
+}

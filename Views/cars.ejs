@@ -1,0 +1,203 @@
+<%- include('Layout/header') %>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="column">
+                <div class="mx-auto mt-4">
+                    <div class="card shadow">
+                        <div class="card-header" style="background-color: #20cc94;">
+                            <h3 class="text-light">Cars</h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <br />
+                            <% if (message) { %>
+                                <div class="alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
+                                    <strong>
+                                        <%= message.message %>
+                                    </strong>
+                                </div>
+                                <% } %>
+                                    <div class="table-responsive">
+                                        <table class="table table-dark text-center">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Car Make</th>
+                                                    <th>Car Model</th>
+                                                    <th>Color</th>
+                                                    <th>Owner ID</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% cars.forEach(function(cars){ %>
+                                                    <tr class="align-middle">
+                                                        <td>
+                                                            <%= cars.id %>
+                                                        </td>
+                                                        <td>
+                                                            <%= cars.carMake %>
+                                                        </td>
+                                                        <td>
+                                                            <%= cars.carModel %>
+                                                        </td>
+                                                        <td>
+                                                            <%= cars.color %>
+                                                        </td>
+                                                        <td>
+                                                            <%= cars.userId %>
+                                                        </td>
+                                                        <td>
+                                                            <a href="cars/<%= cars.id %>" class="btn btn-dark btn-sm"
+                                                                style="background-color: #649094;">View</a>
+                                                            <a href="cars/update/<%= cars.id %>"
+                                                                class="btn btn-dark btn-sm"
+                                                                style="background-color: #649094;">Update</a>
+                                                            <a href="cars/delete/<%= cars.id %>"
+                                                                class="btn btn-light btn-sm"
+                                                                style="background-color: #f4cc0c;">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                    <% }); %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <form action="/api/cars/delete" method="delete" autocomplete="off">
+                                        <div class="col text-center">
+                                            <button type="submit" class="btn btn-lg btn-danger">Delete All</button>
+                                        </div>
+                                    </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container">
+            <div class="column">
+                <div class="mx-auto mt-4">
+                    <div class="card shadow">
+                        <div class="card-header" style="background-color: #20cc94;">
+                            <h3 class="text-light">Create New Car
+                            </h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <form action="/api/cars" method="post" id="add-form" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="carMake">Car Make</label>
+                                    <input type="text" class="form-control form-control-lg" id="carMake"
+                                        placeholder="Enter Car Make" name="carMake" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="carModel">Car Model</label>
+                                    <input type="text" class="form-control form-control-lg" id="carModel"
+                                        placeholder="Enter Last Name" name="carModel" required />
+                                </div>
+                                <div class="mb-3"> <label for="color">Color</label>
+                                    <input type="text" name="color" class="form-control form-control-lg" id="color"
+                                        placeholder="Enter Color" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userId">Owner</label>
+                                    <select name="userId" id="userId" class="form-control form-control-lg mb-3"
+                                        aria-label=".form-select-lg example" required>
+                                        <option selected>Select Owner</option>
+                                        <% users.forEach(function(users){ %>
+                                            <option value="<%= users.id %>">
+                                                <%= users.firstName %>
+                                                    <%= users.lastName %>
+                                            </option>
+                                            <% }); %>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="images" class="form-label">Select Images</label>
+                                    <input class="form-control form-control-lg" type="file" name="images" id="images"
+                                        required multiple />
+                                </div>
+                                <div class="mb-3 d-grid">
+                                    <div class="col text-center">
+                                        <input type="submit" name="submit" value="Create" class="btn btn-dark btn-lg"
+                                            style="background-color: #20cc94;" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container">
+            <div class="column">
+                <div class="mx-auto mt-4">
+                    <div class="card shadow">
+                        <div class="card-header" style="background-color: #20cc94;">
+                            <h3 class="text-light">Update All Cars
+                            </h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <form action="/api/cars/update" method="post" id="add-form" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="carMake">Car Make</label>
+                                    <input type="text" class="form-control form-control-lg" id="carMake"
+                                        placeholder="Enter Car Make" name="carMake" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="carModel">Car Model</label>
+                                    <input type="text" class="form-control form-control-lg" id="carModel"
+                                        placeholder="Enter Last Name" name="carModel" required />
+                                </div>
+                                <div class="mb-3"> <label for="color">Color</label>
+                                    <input type="text" name="color" class="form-control form-control-lg" id="color"
+                                        placeholder="Enter Color" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userId">Owner</label>
+                                    <select name="userId" id="userId" class="form-control form-control-lg mb-3"
+                                        aria-label=".form-select-lg example">
+                                        <option selected>Select Owner</option>
+                                        <% users.forEach(function(users){ %>
+                                            <option value="<%= users.id %>">
+                                                <%= users.firstName %>
+                                                    <%= users.lastName %>
+                                            </option>
+                                            <% }); %>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Select Image</label>
+                                    <input class="form-control form-control-lg" type="file" name="image" id="image"
+                                        required />
+                                </div>
+                                <div class="mb-3 d-grid">
+                                    <div class="col text-center">
+                                        <input type="submit" name="submit" value="Update All" class="btn btn-dark btn-lg"
+                                            style="background-color: #20cc94;" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+    </body>
+
+    </html>
+    <%- include('Layout/footer') %>

@@ -1,0 +1,75 @@
+<%- include('Layout/header') %>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="column">
+                <div class="mx-auto mt-4">
+                    <div class="card shadow">
+                        <div class="card-header" style="background-color: #20cc94;">
+                            <h3 class="text-light">Update User, <%= user.firstName %>
+                                    <%= user.lastName %>
+                            </h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <form action="/api/user/update/<%= user.id %>" method="post" id="add-form"
+                                enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="<%= user.id %>" />
+                                <div class="mb-3">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" class="form-control form-control-lg" id="firstName"
+                                        placeholder="Enter First Name" name="firstName" value="<%= user.firstName %>"
+                                        required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" class="form-control form-control-lg" id="lastName"
+                                        placeholder="Enter Last Name" name="lastName" value="<%= user.lastName %>"
+                                        required />
+                                </div>
+                                <div class="mb-3"> <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control form-control-lg" id="email"
+                                        placeholder="Enter Email" value="<%= user.email %>" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone">Phone</label>
+                                    <input type="tel" name="phone" class="form-control form-control-lg" id="phone"
+                                        placeholder="Enter Phone" value="<%= user.phone %>" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Select Image</label>
+                                    <input class="form-control form-control-lg" type="file" name="image" id="image"
+                                        required />
+                                    <img src="<%= user.image.substr(21) %>" height="70" width="100"
+                                        class="img-thumbnail mt-1">
+                                </div>
+                                <div class="mb-3 d-grid">
+                                    <div class="col text-center">
+                                        <input type="submit" name="submit" value="Update" class="btn btn-dark btn-lg"
+                                            style="background-color: #20cc94;" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+    </body>
+
+    </html>
+    <%- include('Layout/footer') %>
