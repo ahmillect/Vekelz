@@ -147,8 +147,8 @@ exports.deleteAllUsers = async (req, res) => {
 exports.getUser = async (req, res) => {
   await User.findByPk(req.params.id)
     .then((user) => {
-      //res.render("userProfile", { title: "User Profile", user: user });
-      res.status(200).send(user);
+      res.render("userProfile", { title: "User Profile", user: user });
+      //res.status(200).send(user);
     })
     .catch((err) => {
       if (err.kind === "not_found") {

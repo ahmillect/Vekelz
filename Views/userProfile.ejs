@@ -1,0 +1,73 @@
+<%- include('Layout/header') %>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="column">
+                <div class="mx-auto mt-4">
+                    <div class="card shadow">
+                        <div class="card-header" style="background-color: #20cc94;">
+                            <h3 class="text-light">
+                                <%= user.firstName %>
+                                    <%= user.lastName %>
+                            </h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <form id="view-form" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <h3>First Name:</h3>
+                                    <h3 class="text-dark">
+                                        <%= user.firstName %>
+                                    </h3>
+                                </div>
+                                </br>
+                                <div class="mb-3">
+                                    <h3>Last Name:</h3>
+                                    <h3 class="text-dark">
+                                        <%= user.lastName %>
+                                    </h3>
+                                </div>
+                                </br>
+                                <div class="mb-3">
+                                    <h3>E-Mail:</h3>
+                                    <h3 class="text-dark">
+                                        <%= user.email %>
+                                    </h3>
+                                </div>
+                                </br>
+                                <div class="mb-3">
+                                    <h3>Phone:</h3>
+                                    <h3 class="text-dark">
+                                        <%= user.phone %>
+                                    </h3>
+                                </div>
+                                </br>
+                                <div class="mb-3">
+                                    <h3>Image:</h3>
+                                    <img src="<%= user.image.substr(21) %>" height="70" width="100"
+                                        class="img-thumbnail mt-1">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+    </body>
+
+    </html>
+    <%- include('Layout/footer') %>

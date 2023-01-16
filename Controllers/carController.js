@@ -172,8 +172,16 @@ exports.getCar = async (req, res) => {
     ],
   })
     .then((car) => {
-      res.status(200).send(car);
-      //res.render("carProfile", { title: "Car Profile", car: car });
+      CarImage.findAll({
+        where: {
+          carId: car.id,
+        },
+        raw: true,
+      }).then((images) => {
+        console.log(car);
+        res.render("carProfile", { title: "Car Profile", car: car, images: images });
+        //res.status(200).send(car);
+      });
     })
     .catch((err) => {
       if (err.kind === "not_found") {
