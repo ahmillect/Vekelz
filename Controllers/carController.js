@@ -6,7 +6,19 @@ const { db, User, Car, CarImage } = require("../Models/systemModels.js");
 // GET all Cars
 exports.getAllCars = async (req, res) => {
   await User.findAll().then((users) => {
-    Car.findAll()
+    Car.findAll({
+      attributes: ["id", "carMake", "carModel", "color"],
+      include: [
+        {
+          model: CarImage,
+          as: "images",
+          attributes: ["id", "image"],
+        },
+        {
+          model: User,
+        },
+      ],
+    })
       .then((cars) => {
         //res.status(200).send(cars);
         res.render("cars", { title: "Cars", cars: cars, users: users });
@@ -179,7 +191,11 @@ exports.getCar = async (req, res) => {
         raw: true,
       }).then((images) => {
         console.log(car);
-        res.render("carProfile", { title: "Car Profile", car: car, images: images });
+        res.render("carProfile", {
+          title: "Car Profile",
+          car: car,
+          images: images,
+        });
         //res.status(200).send(car);
       });
     })
@@ -305,7 +321,7 @@ exports.deleteCar = async (req, res) => {
         message: `Car with ID ${req.params.id} was deleted successfully`,
       };
       res.redirect("/api/cars");
-      //res.status(200).send({ message: "Car with ID ${req.params.id} was deleted successfully!" });
+      //res.status(200).send({ message: `Car with ID ${req.params.id} was deleted successfully!` });
     })
     .catch((err) => {
       if (err.kind === "not_found") {

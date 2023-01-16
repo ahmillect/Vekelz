@@ -196,7 +196,7 @@ exports.updateUser = async (req, res) => {
         message: `User with ID ${req.params.id} was updated successfully`,
       };
       res.redirect("/api/user");
-      //res.status(200).send({ message: "User with ID ${req.params.id} was updated successfully" });
+      //res.status(200).send({ message: `User with ID ${req.params.id} was updated successfully` });
     })
     .catch((err) => {
       if (err.kind === "not_found") {
@@ -243,7 +243,7 @@ exports.deleteUser = async (req, res) => {
         message: `User with ID ${req.params.id} was deleted successfully`,
       };
       res.redirect("/api/user");
-      //res.status(200).send({ message: "User with ID ${req.params.id} was deleted successfully" });
+      //res.status(200).send({ message: `User with ID ${req.params.id} was deleted successfully` });
     })
     .catch((err) => {
       if (err.kind === "not_found") {
