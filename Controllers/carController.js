@@ -6,10 +6,22 @@ const { db, User, Car, CarImage } = require("../Models/systemModels.js");
 // GET all Cars
 exports.getAllCars = async (req, res) => {
   await User.findAll().then((users) => {
-    Car.findAll()
+    Car.findAll({
+      attributes: ["id", "carMake", "carModel", "color"],
+      include: [
+        {
+          model: CarImage,
+          as: "images",
+          attributes: ["id", "image"],
+        },
+        {
+          model: User,
+        },
+      ],
+    })
       .then((cars) => {
-        //res.status(200).send(cars);
-        res.render("cars", { title: "Cars", cars: cars, users: users });
+        res.status(200).send(cars);
+        //res.render("cars", { title: "Cars", cars: cars, users: users });
       })
       .catch((err) => {
         res.status(500).send({
@@ -76,8 +88,8 @@ exports.createCar = async (req, res) => {
         type: "success",
         message: "Car was created successfully",
       };
-      res.redirect("/api/cars");
-      //res.status(200).send(car);
+      //res.redirect("/api/cars");
+      res.status(200).send(car);
     })
     .catch((err) =>
       res.status(500).send({
@@ -119,8 +131,8 @@ exports.updateAllCars = async (req, res) => {
         type: "info",
         message: `All Cars were updated successfully`,
       };
-      res.redirect("/api/cars");
-      //res.status(200).send({ message: "All Cars were updated successfully" });
+      //res.redirect("/api/cars");
+      res.status(200).send({ message: "All Cars were updated successfully" });
     })
     .catch((err) => {
       if (err.kind === "not_found") {
@@ -146,8 +158,8 @@ exports.deleteAllCars = async (req, res) => {
         type: "danger",
         message: "All Cars were deleted successfully",
       };
-      res.redirect("/api/cars");
-      //res.status(200).send({ message: "All Cars were deleted successfully" });
+      //res.redirect("/api/cars");
+      res.status(200).send({ message: "All Cars were deleted successfully" });
     })
     .catch((err) =>
       res.status(500).send({
@@ -178,9 +190,8 @@ exports.getCar = async (req, res) => {
         },
         raw: true,
       }).then((images) => {
-        console.log(car);
-        res.render("carProfile", { title: "Car Profile", car: car, images: images });
-        //res.status(200).send(car);
+        //res.render("carProfile", { title: "Car Profile", car: car, images: images });
+        res.status(200).send(car);
       });
     })
     .catch((err) => {
@@ -243,8 +254,12 @@ exports.updateCar = async (req, res) => {
         type: "info",
         message: `Car with ID ${req.params.id} was updated successfully`,
       };
-      res.redirect("/api/cars");
-      //res.status(200).send({message: `Car with ID ${req.params.id} was updated successfully`})};
+      //res.redirect("/api/cars");
+      res
+        .status(200)
+        .send({
+          message: `Car with ID ${req.params.id} was updated successfully`,
+        });
     })
     .catch((err) => {
       if (err.kind === "not_found") {
@@ -304,8 +319,12 @@ exports.deleteCar = async (req, res) => {
         type: "danger",
         message: `Car with ID ${req.params.id} was deleted successfully`,
       };
-      res.redirect("/api/cars");
-      //res.status(200).send({ message: "Car with ID ${req.params.id} was deleted successfully!" });
+      //res.redirect("/api/cars");
+      res
+        .status(200)
+        .send({
+          message: `Car with ID ${req.params.id} was deleted successfully!`,
+        });
     })
     .catch((err) => {
       if (err.kind === "not_found") {

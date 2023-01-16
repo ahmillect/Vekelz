@@ -7,8 +7,8 @@ const { db, User } = require("../Models/systemModels.js");
 exports.getAllUsers = async (req, res) => {
   await User.findAll()
     .then((users) => {
-      //res.status(200).send(users);
-      res.render("users", { title: "Users", users: users });
+      res.status(200).send(users);
+      //res.render("users", { title: "Users", users: users });
     })
     .catch((err) => {
       res.status(500).send({
@@ -69,8 +69,8 @@ exports.createUser = async (req, res) => {
         type: "success",
         message: "User was created successfully",
       };
-      //res.status(200).send(user);
-      res.redirect("/api/user");
+      res.status(200).send(user);
+      //res.redirect("/api/user");
     })
     .catch((err) =>
       res.status(500).send({
@@ -107,8 +107,8 @@ exports.updateAllUsers = async (req, res) => {
         type: "info",
         message: "All Users were updated successfully",
       };
-      res.redirect("/api/user");
-      //res.status(200).send({ message: "All Users were updated successfully" });
+      //res.redirect("/api/user");
+      res.status(200).send({ message: "All Users were updated successfully" });
     })
     .catch((err) => {
       if (err.kind === "not_found") {
@@ -133,8 +133,8 @@ exports.deleteAllUsers = async (req, res) => {
         type: "danger",
         message: "All Users were deleted successfully",
       };
-      res.redirect("/api/user");
-      //res.status(200).send({ message: "All Users were deleted successfully" });
+      //res.redirect("/api/user");
+      res.status(200).send({ message: "All Users were deleted successfully" });
     })
     .catch((err) =>
       res.status(500).send({
@@ -147,8 +147,8 @@ exports.deleteAllUsers = async (req, res) => {
 exports.getUser = async (req, res) => {
   await User.findByPk(req.params.id)
     .then((user) => {
-      res.render("userProfile", { title: "User Profile", user: user });
-      //res.status(200).send(user);
+      //res.render("userProfile", { title: "User Profile", user: user });
+      res.status(200).send(user);
     })
     .catch((err) => {
       if (err.kind === "not_found") {
@@ -195,8 +195,8 @@ exports.updateUser = async (req, res) => {
         type: "info",
         message: `User with ID ${req.params.id} was updated successfully`,
       };
-      res.redirect("/api/user");
-      //res.status(200).send({ message: "User with ID ${req.params.id} was updated successfully" });
+      //res.redirect("/api/user");
+      res.status(200).send({ message: `User with ID ${req.params.id} was updated successfully` });
     })
     .catch((err) => {
       if (err.kind === "not_found") {
@@ -242,8 +242,8 @@ exports.deleteUser = async (req, res) => {
         type: "danger",
         message: `User with ID ${req.params.id} was deleted successfully`,
       };
-      res.redirect("/api/user");
-      //res.status(200).send({ message: "User with ID ${req.params.id} was deleted successfully" });
+      //res.redirect("/api/user");
+      res.status(200).send({ message: `User with ID ${req.params.id} was deleted successfully` });
     })
     .catch((err) => {
       if (err.kind === "not_found") {
