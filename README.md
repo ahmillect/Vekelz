@@ -2,7 +2,7 @@
 
 A simple Node-Express REST API with fully functional CRUD operations and a frontend UI/UX implementation following a MVC design pattern. Developed, tested and deployed in less than 30 hours during the GUC final exams.
 
-**⚠️ For the backend-only `Postman` supported release, check the other branch named `postman` ⚠️**
+_**⚠️ For the backend-only `Postman` supported release, check the other branch named `postman` ⚠️**_
 
 ## Badges 🔰
 
@@ -262,7 +262,7 @@ exports.updateCar = async (req, res) => {
 ```
 or through any GUI like MySQL Workbench or phpMyAdmin.
 
-- Then, install all the needed the dependencies with `npm`:
+- Then, install all the needed dependencies with `npm`:
 ```bash
 > git clone https://github.com/ahmillect/Vekelz
 > cd Vekelz/
@@ -307,6 +307,8 @@ To run this project, you must add the following environment variables to your `.
 ## API Documentation :page_with_curl:
 
 ### User Routes
+
+- To get a better understanding for how the models are related to each other, check the schema diagram from [here!](https://github.com/ahmillect/Vekelz/blob/master/Assets/vekelz-schema.png)
 
 #### Create User
 
@@ -546,16 +548,16 @@ Response
         "images": [
             {
                 "id": 10,
-                "image": "http://localhost:3500/Media/xaqirajzzdwsqhoroenrsybornccxifoilestwinc.png"
+                "image": "http://localhost:3500/Media/xaqirajzzdwsqhoroenrsybornccxifoilestwinc.jpg"
             }
         ],
         "user": {
             "id": 5,
             "firstName": "John",
-            "lastName": "Khaled",
+            "lastName": "James",
             "email": "john@email.com",
             "phone": "12345",
-            "image": "http://localhost:3500/Media/ezladcknyvartlejsranvrzuntebmqxgdczumjfcv.png"
+            "image": "http://localhost:3500/Media/ezladcknyvartlejsranvrzuntebmqxgdczumjfcv.jpg"
         }
     },
     {
@@ -566,28 +568,28 @@ Response
         "images": [
             {
                 "id": 11,
-                "image": "http://localhost:3500/Media/kzeujkjtwriwqexugnbxuizhxqvcnkebwvjrnplum.png"
+                "image": "http://localhost:3500/Media/kzeujkjtwriwqexugnbxuizhxqvcnkebwvjrnplum.jpg"
             },
             {
                 "id": 12,
-                "image": "http://localhost:3500/Media/lgatchpwzcvgcvzrgckfijezncifhbjraxoznapjc.png"
+                "image": "http://localhost:3500/Media/lgatchpwzcvgcvzrgckfijezncifhbjraxoznapjc.jpg"
             },
             {
                 "id": 13,
-                "image": "http://localhost:3500/Media/qaovtcbjoqkkupnkwfkwpcioqrmkwkfnynjbkamij.png"
+                "image": "http://localhost:3500/Media/qaovtcbjoqkkupnkwfkwpcioqrmkwkfnynjbkamij.jpg"
             },
             {
                 "id": 14,
-                "image": "http://localhost:3500/Media/msbbtpgvxrlrndcffixsbseqmufdedppokxecrmju.png"
+                "image": "http://localhost:3500/Media/msbbtpgvxrlrndcffixsbseqmufdedppokxecrmju.jpg"
             }
         ],
         "user": {
             "id": 5,
             "firstName": "John",
-            "lastName": "Khaled",
+            "lastName": "James",
             "email": "john@email.com",
             "phone": "12345",
-            "image": "http://localhost:3500/Media/ezladcknyvartlejsranvrzuntebmqxgdczumjfcv.png"
+            "image": "http://localhost:3500/Media/ezladcknyvartlejsranvrzuntebmqxgdczumjfcv.jpg"
         }
     }
 ]
@@ -659,28 +661,28 @@ Response
     "images": [
         {
             "id": 11,
-            "image": "http://localhost:3500/Media/kzeujkjtwriwqexugnbxuizhxqvcnkebwvjrnplum.png"
+            "image": "http://localhost:3500/Media/kzeujkjtwriwqexugnbxuizhxqvcnkebwvjrnplum.jpg"
         },
         {
             "id": 12,
-            "image": "http://localhost:3500/Media/lgatchpwzcvgcvzrgckfijezncifhbjraxoznapjc.png"
+            "image": "http://localhost:3500/Media/lgatchpwzcvgcvzrgckfijezncifhbjraxoznapjc.jpg"
         },
         {
             "id": 13,
-            "image": "http://localhost:3500/Media/qaovtcbjoqkkupnkwfkwpcioqrmkwkfnynjbkamij.png"
+            "image": "http://localhost:3500/Media/qaovtcbjoqkkupnkwfkwpcioqrmkwkfnynjbkamij.jpg"
         },
         {
             "id": 14,
-            "image": "http://localhost:3500/Media/msbbtpgvxrlrndcffixsbseqmufdedppokxecrmju.png"
+            "image": "http://localhost:3500/Media/msbbtpgvxrlrndcffixsbseqmufdedppokxecrmju.jpg"
         }
     ],
     "user": {
         "id": 5,
         "firstName": "John",
-        "lastName": "Khaled",
+        "lastName": "James",
         "email": "john@email.com",
         "phone": "12345",
-        "image": "http://localhost:3500/Media/ezladcknyvartlejsranvrzuntebmqxgdczumjfcv.png"
+        "image": "http://localhost:3500/Media/ezladcknyvartlejsranvrzuntebmqxgdczumjfcv.jpg"
     }
 }
 ```
@@ -741,5 +743,7 @@ Response
 ## License ⚖️
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+_Refer to the LICENSE.md file for more information_
 
 © Copyright 2023 [Ahmed Khaled] [Vekelz]
