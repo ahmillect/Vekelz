@@ -19,6 +19,19 @@ exports.getAllCars = async (req, res) => {
         },
       ],
     })
+    Car.findAll({
+      attributes: ["id", "carMake", "carModel", "color"],
+      include: [
+        {
+          model: CarImage,
+          as: "images",
+          attributes: ["id", "image"],
+        },
+        {
+          model: User,
+        },
+      ],
+    })
       .then((cars) => {
         res.status(200).send(cars);
         //res.render("cars", { title: "Cars", cars: cars, users: users });
@@ -190,7 +203,11 @@ exports.getCar = async (req, res) => {
         },
         raw: true,
       }).then((images) => {
-        //res.render("carProfile", { title: "Car Profile", car: car, images: images });
+        // res.render("carProfile", {
+        //   title: "Car Profile",
+        //   car: car,
+        //   images: images,
+        // });
         res.status(200).send(car);
       });
     })
