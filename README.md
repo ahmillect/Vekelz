@@ -297,7 +297,7 @@ To run this project, you must add the following environment variables to your `.
 ## Tests 🧪
 
 - Testing was done using `Postman` on every API end-point.
-- For a `Postman` test-drived version of this project, clone the branch named `postman` instead of `master`.
+- For a `Postman` test-driven version of this project, clone the branch named `postman` instead of `master`.
 
 ## Optimizations :broom:
 
@@ -306,9 +306,9 @@ To run this project, you must add the following environment variables to your `.
 
 ## API Documentation :page_with_curl:
 
-### User Routes
-
 - To get a better understanding for how the models are related to each other, check the schema diagram from [here!](https://github.com/ahmillect/Vekelz/blob/master/Assets/vekelz-schema.png)
+
+### User Routes
 
 #### Create User
 
